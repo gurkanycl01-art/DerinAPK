@@ -1,0 +1,4068 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08030d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<title>Derin ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --pink:#ff3f88;
+    --pink2:#ff79aa;
+    --purple:#8b5cf6;
+    --bg:#06020b;
+    --card:rgba(255,255,255,.075);
+    --border:rgba(255,255,255,.11);
+    --text:#fff;
+    --muted:#aaa0ad;
+}
+
+html{
+    background:#06020b;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 10% -10%,#3b002c 0,transparent 35%),
+        radial-gradient(circle at 100% 100%,#210044 0,transparent 40%),
+        #06020b;
+    color:white;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    overflow-x:hidden;
+    padding-bottom:100px;
+}
+
+button,textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+button:focus,
+textarea:focus{
+    outline:none;
+}
+
+.app{
+    width:min(100%,760px);
+    margin:auto;
+    padding:
+        max(18px,env(safe-area-inset-top))
+        14px
+        110px;
+}
+
+.top{
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:500;
+    background:rgba(6,2,11,.65);
+    backdrop-filter:blur(18px);
+}
+
+.logo{
+    font-size:21px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ff659d;
+}
+
+.counter{
+    padding:7px 11px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:rgba(255,255,255,.055);
+    color:#d8d0dc;
+    font-size:10px;
+}
+
+.screen{
+    display:none;
+    animation:appear .3s ease;
+}
+
+.screen.active{
+    display:block;
+}
+
+.card{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.095),
+            rgba(255,255,255,.035)
+        );
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:22px;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.045);
+    backdrop-filter:blur(22px);
+}
+
+h1{
+    font-size:clamp(40px,11vw,58px);
+    line-height:1;
+    letter-spacing:-2px;
+}
+
+h2{
+    font-size:25px;
+    margin-bottom:9px;
+}
+
+p{
+    color:#d8d0dc;
+    line-height:1.65;
+}
+
+.muted{
+    color:#99909d;
+    font-size:10px;
+    letter-spacing:1.5px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#ff649d,#fff,#b98aff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero{
+    min-height:65vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.hero-heart{
+    font-size:72px;
+    margin-bottom:20px;
+    filter:drop-shadow(0 0 25px #ff176f);
+    animation:heartbeat 1.6s infinite;
+}
+
+.daily-message{
+    margin-top:21px;
+    padding:19px;
+    border-radius:23px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,63,136,.15),
+            rgba(139,92,246,.13)
+        );
+    border:1px solid rgba(255,100,170,.16);
+}
+
+.daily-label{
+    color:#ff82ac;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:8px;
+}
+
+.daily-text{
+    font-size:16px;
+    font-weight:700;
+    line-height:1.55;
+}
+
+.primary{
+    width:100%;
+    margin-top:17px;
+    padding:16px;
+    border:0;
+    border-radius:18px;
+    color:white;
+    font-size:14px;
+    font-weight:800;
+    background:linear-gradient(110deg,#ff3f88,#8b5cf6);
+    box-shadow:0 12px 30px rgba(255,40,130,.2);
+    transition:.2s;
+}
+
+.primary:active{
+    transform:scale(.97);
+}
+
+.home-grid,
+.games-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:11px;
+    margin-top:13px;
+}
+
+.home-card{
+    min-height:120px;
+    padding:17px;
+    border-radius:21px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.045);
+    transition:.2s;
+}
+
+.home-card:active{
+    transform:scale(.97);
+}
+
+.home-icon{
+    font-size:27px;
+    margin-bottom:9px;
+}
+
+.home-card strong{
+    display:block;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.home-card span{
+    display:block;
+    color:#aaa0ad;
+    font-size:10px;
+    line-height:1.45;
+}
+
+.modern-button{
+    width:100%;
+    padding:15px;
+    text-align:left;
+    color:white;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:17px;
+    background:rgba(255,255,255,.055);
+    transition:.2s;
+}
+
+.modern-button:active{
+    transform:scale(.98);
+}
+
+.button-icon{
+    display:inline-block;
+    width:32px;
+    font-size:21px;
+}
+
+.button-text{
+    font-weight:700;
+}
+
+.modern-button small{
+    display:block;
+    margin-left:34px;
+    margin-top:3px;
+    color:#938995;
+    font-size:10px;
+}
+
+.progress{
+    height:5px;
+    margin-bottom:16px;
+    border-radius:10px;
+    background:rgba(255,255,255,.08);
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#ff3f88,#8b5cf6);
+    transition:.3s;
+}
+
+.question-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.question-counter{
+    color:#ff82ac;
+    font-size:12px;
+    font-weight:800;
+}
+
+.question-label{
+    color:#a99eaa;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:800;
+    line-height:1.45;
+    margin-bottom:18px;
+}
+
+.answers{
+    display:grid;
+    gap:9px;
+}
+
+.answer{
+    width:100%;
+    padding:15px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.09);
+    background:rgba(255,255,255,.045);
+    color:white;
+    text-align:left;
+    font-size:13px;
+    transition:.18s;
+}
+
+.answer:active{
+    transform:scale(.98);
+}
+
+.answer.selected{
+    background:rgba(255,55,140,.16);
+    border-color:rgba(255,90,155,.65);
+}
+
+.answer.cold{
+    color:#c1bac5;
+}
+
+.reaction{
+    min-height:23px;
+    margin-top:13px;
+    text-align:center;
+    color:#ff9fbe;
+    font-size:12px;
+}
+
+.jar-area{
+    text-align:center;
+    padding-top:10px;
+}
+
+.jar{
+    position:relative;
+    width:170px;
+    height:210px;
+    margin:30px auto 22px;
+    border:2px solid rgba(255,180,215,.32);
+    border-radius:30px 30px 45px 45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(
+        90deg,
+        rgba(255,255,255,.12),
+        rgba(255,255,255,.025),
+        rgba(255,255,255,.08)
+    );
+    box-shadow:0 0 35px rgba(255,40,140,.12);
+}
+
+.jar:before{
+    content:"";
+    position:absolute;
+    top:-17px;
+    left:23px;
+    width:120px;
+    height:25px;
+    border-radius:8px;
+    background:linear-gradient(90deg,#792950,#ff6b9f,#792950);
+}
+
+.jar.shake{
+    animation:shake .45s ease;
+}
+
+.jar-label{
+    color:#ffb1ca;
+    font-size:13px;
+}
+
+.jar-button{
+    border:0;
+    padding:14px 25px;
+    border-radius:18px;
+    color:white;
+    font-weight:800;
+    background:linear-gradient(100deg,#ff3f88,#8b5cf6);
+}
+
+.jar-note{
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    border-radius:22px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,60,140,.12),
+        rgba(120,70,240,.1)
+    );
+    border:1px solid rgba(255,100,160,.14);
+}
+
+.jar-note.show{
+    display:block;
+    animation:noteIn .35s ease;
+}
+
+.note-icon{
+    text-align:center;
+    font-size:40px;
+}
+
+.note-type{
+    margin:8px 0;
+    text-align:center;
+    color:#ff82ac;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.note-text{
+    text-align:center;
+    font-size:15px;
+    line-height:1.6;
+}
+
+textarea{
+    width:100%;
+    min-height:115px;
+    margin-top:15px;
+    padding:14px;
+    resize:none;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:17px;
+    background:rgba(0,0,0,.22);
+    color:white;
+}
+
+.small-button{
+    width:100%;
+    margin-top:9px;
+    padding:13px;
+    border:0;
+    border-radius:15px;
+    color:white;
+    font-weight:700;
+    background:rgba(255,255,255,.08);
+}
+
+.jar-answer-sent{
+    display:none;
+    margin-top:10px;
+    text-align:center;
+    color:#ff9fbe;
+    font-size:12px;
+}
+
+.jar-answer-sent.show{
+    display:block;
+}
+
+.music-player{
+    margin-top:18px;
+    overflow:hidden;
+    border-radius:23px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+}
+
+.album{
+    height:230px;
+    padding:20px;
+    display:flex;
+    align-items:flex-end;
+    background:
+        linear-gradient(to top,rgba(0,0,0,.8),transparent),
+        url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=70")
+        center/cover;
+}
+
+.song-title{
+    font-size:23px;
+    font-weight:800;
+}
+
+.artist{
+    margin-top:4px;
+    color:#d1c7d3;
+}
+
+.player{
+    padding:18px;
+}
+
+.seek{
+    height:5px;
+    border-radius:10px;
+    background:rgba(255,255,255,.1);
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.seek-bar{
+    width:0;
+    height:100%;
+    background:#ff4d91;
+    transition:width:.1s linear;
+}
+
+.time{
+    display:flex;
+    justify-content:space-between;
+    margin-top:7px;
+    color:#908694;
+    font-size:10px;
+}
+
+.play-row{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+}
+
+.play{
+    width:58px;
+    height:58px;
+    border:0;
+    border-radius:50%;
+    background:white;
+    color:#250016;
+    font-size:19px;
+}
+
+.surprise{
+    text-align:center;
+}
+
+.gift{
+    font-size:85px;
+    animation:float 2s infinite ease-in-out;
+    filter:drop-shadow(0 0 22px rgba(255,60,140,.4));
+}
+
+.surprise-text{
+    margin-top:20px;
+    color:#ffadc7;
+    line-height:1.7;
+}
+
+.game-card{
+    min-height:155px;
+    padding:18px;
+    border-radius:23px;
+    border:1px solid rgba(255,255,255,.09);
+    background:rgba(255,255,255,.045);
+}
+
+.game-icon{
+    font-size:33px;
+    margin-bottom:11px;
+}
+
+.game-card strong{
+    display:block;
+    margin-bottom:6px;
+    font-size:13px;
+}
+
+.game-card span{
+    display:block;
+    color:#a9a0ad;
+    font-size:10px;
+    line-height:1.45;
+}
+
+.game-card button{
+    width:100%;
+    margin-top:13px;
+    padding:9px;
+    border:0;
+    border-radius:12px;
+    color:white;
+    background:rgba(255,60,140,.15);
+    font-weight:700;
+}
+
+.game-play{
+    text-align:center;
+}
+
+.game-score{
+    margin:12px 0;
+    color:#ff82ac;
+    font-size:13px;
+}
+
+.game-question{
+    margin:20px 0;
+    font-size:20px;
+    font-weight:800;
+    line-height:1.45;
+}
+
+.game-options{
+    display:grid;
+    gap:9px;
+}
+
+.game-result{
+    margin-top:18px;
+    color:#ffadc7;
+    font-weight:700;
+    line-height:1.6;
+}
+
+.game-warning{
+    min-height:25px;
+    margin-top:15px;
+    color:#ff668f;
+    font-size:13px;
+    font-weight:800;
+    opacity:0;
+}
+
+.game-warning.show{
+    opacity:1;
+}
+
+.memory-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:20px;
+}
+
+.memory-card{
+    aspect-ratio:1;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:15px;
+    background:rgba(255,255,255,.06);
+    color:white;
+    font-size:25px;
+}
+
+.memory-card.open{
+    background:rgba(255,60,140,.14);
+}
+
+.heart-game{
+    position:relative;
+    height:320px;
+    margin-top:18px;
+    overflow:hidden;
+    border-radius:22px;
+    background:radial-gradient(
+        circle,
+        rgba(255,50,140,.09),
+        transparent 60%
+    );
+    border:1px solid var(--border);
+    touch-action:none;
+}
+
+.falling-heart{
+    position:absolute;
+    z-index:10;
+    font-size:30px;
+    animation:heartFall 1.8s linear forwards;
+    user-select:none;
+    touch-action:manipulation;
+}
+
+.bottom-nav{
+    position:fixed;
+    left:50%;
+    bottom:max(9px,env(safe-area-inset-bottom));
+    transform:translateX(-50%);
+    width:calc(100% - 16px);
+    max-width:760px;
+    z-index:1000;
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:3px;
+    padding:7px;
+    border:1px solid rgba(255,255,255,.11);
+    border-radius:23px;
+    background:rgba(10,4,16,.9);
+    backdrop-filter:blur(25px);
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.nav-item{
+    min-width:0;
+    padding:7px 2px;
+    text-align:center;
+    border-radius:14px;
+    color:#aaa0ad;
+    font-size:7px;
+}
+
+.nav-item.active{
+    color:white;
+    background:linear-gradient(
+        135deg,
+        rgba(255,60,140,.22),
+        rgba(120,70,240,.2)
+    );
+}
+
+.nav-icon{
+    display:block;
+    margin-bottom:3px;
+    font-size:18px;
+}
+
+.warning,
+.flower-warning{
+    position:fixed;
+    left:50%;
+    top:50%;
+    width:calc(100% - 40px);
+    max-width:390px;
+    z-index:9999;
+    transform:translate(-50%,-50%) scale(.9);
+    padding:28px 22px;
+    border-radius:26px;
+    text-align:center;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    background:linear-gradient(
+        135deg,
+        rgba(45,2,25,.99),
+        rgba(12,2,25,.99)
+    );
+    border:1px solid rgba(255,80,140,.45);
+    box-shadow:0 0 70px rgba(255,0,100,.3);
+}
+
+.warning.show,
+.flower-warning.show{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.warning-icon,
+.flower-warning-icon{
+    font-size:52px;
+}
+
+.warning-title,
+.flower-warning-title{
+    margin-top:8px;
+    font-size:23px;
+    font-weight:900;
+    color:#ff6b91;
+}
+
+.warning-text,
+.flower-warning-text{
+    margin-top:9px;
+    color:#e3d5dd;
+    font-size:13px;
+    line-height:1.6;
+}
+
+#final{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    display:none;
+    background:#020005;
+}
+
+#finalCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+.final-close{
+    position:absolute;
+    top:20px;
+    right:18px;
+    z-index:30;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(20,5,25,.75);
+    color:white;
+    font-size:27px;
+}
+
+#fingerScreen{
+    position:absolute;
+    inset:0;
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+        radial-gradient(circle,rgba(255,0,120,.08),transparent 35%),
+        rgba(3,0,8,.96);
+    transition:opacity .5s;
+}
+
+.fingerprint{
+    position:relative;
+    width:130px;
+    height:130px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    border:1px solid rgba(255,80,150,.15);
+    box-shadow:0 0 35px rgba(255,30,130,.12);
+    touch-action:none;
+}
+
+.fingerprint svg{
+    width:88px;
+    height:88px;
+    fill:none;
+    stroke:#ff4f94;
+    stroke-width:2;
+    stroke-linecap:round;
+    filter:drop-shadow(0 0 8px #ff207d);
+}
+
+.scan-line{
+    position:absolute;
+    left:8px;
+    right:8px;
+    top:8px;
+    height:2px;
+    background:#ff62a0;
+    box-shadow:0 0 10px #ff1680;
+    opacity:0;
+}
+
+.scanning .scan-line{
+    opacity:1;
+    animation:scan 1s linear infinite;
+}
+
+.finger-title{
+    margin-top:25px;
+    font-size:21px;
+    font-weight:800;
+}
+
+.finger-text{
+    max-width:280px;
+    margin-top:8px;
+    color:#a9a0ad;
+    font-size:13px;
+}
+
+.scan-progress{
+    width:230px;
+    height:5px;
+    margin-top:23px;
+    overflow:hidden;
+    border-radius:10px;
+    background:rgba(255,255,255,.08);
+}
+
+.scan-progress-bar{
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,#ff3f88,#9b5cff);
+}
+
+.scan-percent{
+    margin-top:9px;
+    color:#ff91b5;
+    font-size:11px;
+}
+
+#finalTitle{
+    position:absolute;
+    top:5%;
+    left:0;
+    width:100%;
+    z-index:5;
+    text-align:center;
+    color:#ff758f;
+    font-size:clamp(17px,4vw,27px);
+    letter-spacing:3px;
+    opacity:0;
+    transition:opacity 1.5s;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.13)}
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@keyframes shake{
+    0%,100%{transform:rotate(0)}
+    20%{transform:rotate(-7deg)}
+    40%{transform:rotate(7deg)}
+    60%{transform:rotate(-5deg)}
+    80%{transform:rotate(4deg)}
+}
+
+@keyframes noteIn{
+    from{
+        opacity:0;
+        transform:translateY(12px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+@keyframes scan{
+    0%{top:8px}
+    50%{top:115px}
+    100%{top:8px}
+}
+
+@keyframes heartFall{
+    from{
+        transform:translateY(-40px) rotate(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(350px) rotate(180deg);
+        opacity:.1;
+    }
+}
+
+@media(max-width:380px){
+
+    .nav-item{
+        font-size:6px;
+    }
+
+    .nav-icon{
+        font-size:16px;
+    }
+
+    .home-grid,
+    .games-grid{
+        gap:8px;
+    }
+
+    .card{
+        padding:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="top">
+    <div class="logo">
+        Derin <span>❤️</span>
+    </div>
+
+    <div class="counter">
+        Sadece ikimiz
+    </div>
+</header>
+
+
+<section class="screen active" id="home">
+
+    <div class="hero">
+
+        <div class="hero-heart">💖</div>
+
+        <div class="muted">
+            SADECE SENİN İÇİN
+        </div>
+
+        <h1>
+            Biraz<br>
+            <span class="gradient">eğlenelim.</span>
+        </h1>
+
+        <p style="margin-top:17px">
+            Birkaç soru, birkaç oyun,
+            küçük sürprizler ve sadece
+            ikimize ait birkaç şey... ❤️
+        </p>
+
+        <div class="daily-message">
+
+            <div class="daily-label">
+                BUGÜNÜN MESAJI
+            </div>
+
+            <div class="daily-text">
+                Sadece bugün değil, her gün
+                seni seçerdim. Hiç düşünmeden. ❤️
+            </div>
+
+        </div>
+
+        <button class="primary" onclick="startQuiz()">
+            Sorulara Başla →
+        </button>
+
+        <div class="home-grid">
+
+            <div class="home-card" onclick="go('games')">
+                <div class="home-icon">🎮</div>
+                <strong>Oyunlar</strong>
+                <span>Biraz yarışalım, biraz eğlenelim.</span>
+            </div>
+
+            <div class="home-card" onclick="go('jar')">
+                <div class="home-icon">🫙</div>
+                <strong>Aşk Kavanozu</strong>
+                <span>İçinden ne çıkacağını kimse bilmiyor.</span>
+            </div>
+
+            <div class="home-card" onclick="go('surprise')">
+                <div class="home-icon">🎁</div>
+                <strong>Sürpriz</strong>
+                <span>Bugün sana ne çıkacak?</span>
+            </div>
+
+            <div class="home-card" onclick="go('last')">
+                <div class="home-icon">🔐</div>
+                <strong>Gizli Bölüm</strong>
+                <span>Herkese açık değil.</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="screen" id="quiz">
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="card">
+
+        <div class="question-header">
+
+            <span class="question-counter" id="questionCounter">
+                1 / 21
+            </span>
+
+            <span class="question-label">
+                SEN & BEN
+            </span>
+
+        </div>
+
+        <div class="question" id="question"></div>
+
+        <div class="answers" id="answers"></div>
+
+        <div class="reaction" id="reaction"></div>
+
+    </div>
+
+</section>
+
+
+<section class="screen" id="result">
+
+    <div class="card" style="text-align:center">
+
+        <div style="font-size:70px">
+            🥰
+        </div>
+
+        <h2>İşte bu kadar.</h2>
+
+        <p>
+            21 sorunun da üstesinden geldin.
+            <br><br>
+            Ama bazı cevapların burada
+            unutulacağını sanıyorsan...
+            yanılıyorsun. 😏
+        </p>
+
+        <button class="primary" onclick="go('jar')">
+            Kavanozu Aç →
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="screen" id="jar">
+
+    <div class="card">
+
+        <h2 style="text-align:center">
+            🫙 Aşk Kavanozu
+        </h2>
+
+        <p style="text-align:center">
+            Bir kâğıt seç.
+            İçinden soru, itiraf,
+            görev veya küçük bir hayal çıkabilir.
+        </p>
+
+        <div class="jar-area">
+
+            <div class="jar" id="jarObject">
+                <div class="jar-label">
+                    bir kâğıt seç...
+                </div>
+            </div>
+
+            <button class="jar-button" onclick="drawJar()">
+                📝 Kâğıt Çek
+            </button>
+
+            <div class="jar-note" id="jarNote">
+
+                <div class="note-icon" id="noteIcon">
+                    💌
+                </div>
+
+                <div class="note-type" id="noteType"></div>
+
+                <div class="note-text" id="noteText"></div>
+
+                <textarea
+                    id="jarAnswer"
+                    placeholder="Cevabını buraya yaz..."
+                ></textarea>
+
+                <button
+                    class="small-button"
+                    onclick="sendJarAnswer()"
+                >
+                    Cevabımı Bırak 💌
+                </button>
+
+                <div
+                    class="jar-answer-sent"
+                    id="jarAnswerSent"
+                ></div>
+
+                <button
+                    class="primary"
+                    onclick="drawJar()"
+                >
+                    Başka Bir Kâğıt Çek 🫙
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MÜZİK
+===================================================== -->
+
+<section class="screen" id="music">
+
+    <div class="card">
+
+        <h2>🎵 Bizim Şarkımız</h2>
+
+        <p class="muted">
+            BU BÖLÜM SADECE İKİMİZ İÇİN
+        </p>
+
+        <div class="music-player">
+
+            <div class="album">
+
+                <div>
+                    <div class="song-title">
+                        Bizim Şarkımız
+                    </div>
+
+                    <div class="artist">
+                        Derin & Ben ❤️
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="player">
+
+                <div
+                    class="seek"
+                    id="musicSeek"
+                >
+                    <div
+                        class="seek-bar"
+                        id="seekBar"
+                    ></div>
+                </div>
+
+                <div class="time">
+
+                    <span id="currentTime">
+                        0:00
+                    </span>
+
+                    <span id="duration">
+                        0:00
+                    </span>
+
+                </div>
+
+                <div class="play-row">
+
+                    <button
+                        class="play"
+                        id="playButton"
+                        onclick="toggleMusic()"
+                    >
+                        ▶
+                    </button>
+
+                </div>
+
+                <p
+                    id="musicMessage"
+                    style="text-align:center;font-size:12px;margin-top:14px"
+                >
+                    Bizim şarkımız... 🎧❤️
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Gerçek müzik dosyası -->
+<audio
+    id="ourSong"
+    preload="metadata"
+>
+    <source src="muzik.mp3" type="audio/mpeg">
+</audio>
+
+
+<section class="screen" id="surprise">
+
+    <div class="card surprise">
+
+        <div class="gift" id="gift">
+            🎁
+        </div>
+
+        <h2>
+            Bugünün Sürprizi
+        </h2>
+
+        <p>
+            Kutuyu açmaya hazır mısın?
+        </p>
+
+        <button
+            class="primary"
+            onclick="openSurprise()"
+        >
+            Aç ✨
+        </button>
+
+        <div
+            class="surprise-text"
+            id="surpriseText"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<section class="screen" id="ask">
+
+    <div class="card">
+
+        <h2>
+            💌 Bana Bir Şey Söyle
+        </h2>
+
+        <p>
+            İçinden ne geliyorsa yaz.
+        </p>
+
+        <textarea
+            id="userQuestion"
+            placeholder="Aklından geçen bir şeyi yaz..."
+        ></textarea>
+
+        <button
+            class="primary"
+            onclick="sendQuestion()"
+        >
+            Kalbime Gönder 💗
+        </button>
+
+        <p
+            id="questionReply"
+            style="text-align:center;color:#ff9fbe;margin-top:15px"
+        ></p>
+
+    </div>
+
+</section>
+
+
+<section class="screen" id="games">
+
+    <div class="card">
+
+        <h2>🎮 Oyun Odası</h2>
+
+        <p>
+            Bir oyun seç. Bakalım kim kazanacak? 😏
+        </p>
+
+        <div class="games-grid">
+
+            <div class="game-card">
+
+                <div class="game-icon">🎯</div>
+
+                <strong>
+                    Beni Ne Kadar Tanıyorsun?
+                </strong>
+
+                <span>
+                    Bakalım hakkımda ne kadar
+                    şey biliyorsun.
+                </span>
+
+                <button onclick="startKnowGame()">
+                    Oyna
+                </button>
+
+            </div>
+
+            <div class="game-card">
+
+                <div class="game-icon">🃏</div>
+
+                <strong>Hafıza</strong>
+
+                <span>
+                    Aynı kalpleri eşleştir.
+                </span>
+
+                <button onclick="startMemory()">
+                    Oyna
+                </button>
+
+            </div>
+
+            <div class="game-card">
+
+                <div class="game-icon">💞</div>
+
+                <strong>Kalpleri Yakala</strong>
+
+                <span>
+                    20 saniyede kaç kalp
+                    yakalayabileceksin?
+                </span>
+
+                <button onclick="startHeartGame()">
+                    Oyna
+                </button>
+
+            </div>
+
+            <div class="game-card">
+
+                <div class="game-icon">😈</div>
+
+                <strong>Doğru mu Cesaret mi?</strong>
+
+                <span>
+                    Masum seçenekler bekleme.
+                </span>
+
+                <button onclick="startTruthGame()">
+                    Oyna
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="screen" id="gamePlay">
+
+    <div class="card game-play">
+
+        <h2 id="gameTitle">
+            🎮 Oyun
+        </h2>
+
+        <div
+            class="game-score"
+            id="gameScore"
+        ></div>
+
+        <div id="gameContent"></div>
+
+        <button
+            class="modern-button"
+            style="margin-top:20px"
+            onclick="go('games')"
+        >
+            <span class="button-icon">←</span>
+            <span class="button-text">
+                Oyunlara Dön
+            </span>
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="screen" id="last">
+
+    <div class="card" style="text-align:center">
+
+        <div style="font-size:70px">
+            🔐
+        </div>
+
+        <h2>
+            Son bir bölüm var.
+        </h2>
+
+        <p>
+            Ama burası herkese açılmıyor.
+            <br>
+            Önce kim olduğunu doğrulamamız lazım. 👀
+        </p>
+
+        <button
+            class="primary"
+            onclick="openFinal()"
+        >
+            Final Bölümüne Gir 🌌
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<nav class="bottom-nav">
+
+    <div class="nav-item active" onclick="go('home')">
+        <span class="nav-icon">⌂</span>
+        Ana Sayfa
+    </div>
+
+    <div class="nav-item" onclick="go('quiz')">
+        <span class="nav-icon">♡</span>
+        Sorular
+    </div>
+
+    <div class="nav-item" onclick="go('jar')">
+        <span class="nav-icon">♢</span>
+        Kavanoz
+    </div>
+
+    <div class="nav-item" onclick="go('music')">
+        <span class="nav-icon">♫</span>
+        Şarkımız
+    </div>
+
+    <div class="nav-item" onclick="go('surprise')">
+        <span class="nav-icon">✦</span>
+        Sürpriz
+    </div>
+
+    <div class="nav-item" onclick="go('ask')">
+        <span class="nav-icon">✉</span>
+        Bana Sor
+    </div>
+
+    <div class="nav-item" onclick="go('games')">
+        <span class="nav-icon">♟</span>
+        Oyunlar
+    </div>
+
+    <div class="nav-item" onclick="go('last')">
+        <span class="nav-icon">◈</span>
+        Final
+    </div>
+
+</nav>
+
+
+<div class="warning" id="executionWarning">
+
+    <div class="warning-icon">
+        ☠️
+    </div>
+
+    <div class="warning-title">
+        İnfazın verildi.
+    </div>
+
+    <div class="warning-text">
+        <br><br>
+        <strong>
+            Divanınızda aaaaa sizinde bi bitmediniz hammankoyim
+        </strong>
+    </div>
+
+</div>
+
+
+<div class="flower-warning" id="flowerWarning">
+
+    <div class="flower-warning-icon">
+        🌹
+    </div>
+
+    <div class="flower-warning-title">
+        Bir dakika... ❤️
+    </div>
+
+    <div class="flower-warning-text">
+        <br><br>
+        <strong>
+            Benim de eşi benzeri olmayan
+            çiçeğim sensin. 🌸❤️
+        </strong>
+    </div>
+
+</div>
+
+
+<div id="final">
+
+    <button
+        class="final-close"
+        onclick="closeFinal()"
+    >
+        ×
+    </button>
+
+    <canvas id="finalCanvas"></canvas>
+
+    <div id="fingerScreen">
+
+        <div
+            class="fingerprint"
+            id="fingerprint"
+        >
+
+            <svg viewBox="0 0 100 100">
+
+                <path d="M50 12 C28 12 18 29 18 47 C18 64 26 75 31 83"/>
+                <path d="M50 21 C34 21 26 33 26 48 C26 61 31 70 36 78"/>
+                <path d="M50 30 C41 30 34 37 34 49 C34 59 37 66 41 73"/>
+                <path d="M50 39 C45 39 42 43 42 49 C42 56 44 61 47 66"/>
+
+                <path d="M50 12 C72 12 82 29 82 47 C82 63 74 75 69 83"/>
+                <path d="M50 21 C66 21 74 33 74 48 C74 61 69 70 64 78"/>
+                <path d="M50 30 C59 30 66 37 66 49 C66 59 63 66 59 73"/>
+                <path d="M50 39 C55 39 58 43 58 49 C58 56 56 61 53 66"/>
+
+                <path d="M50 48 C48 48 47 50 47 52 C47 56 49 59 50 61 C51 59 53 56 53 52 C53 50 52 48 50 48"/>
+
+            </svg>
+
+            <div class="scan-line"></div>
+
+        </div>
+
+        <div
+            class="finger-title"
+            id="fingerTitle"
+        >
+            Parmak izini okut
+        </div>
+
+        <div
+            class="finger-text"
+            id="fingerText"
+        >
+            Parmağını yukarıdaki simgenin
+            üzerinde 2 saniye tut.
+        </div>
+
+        <div class="scan-progress">
+
+            <div
+                class="scan-progress-bar"
+                id="scanBar"
+            ></div>
+
+        </div>
+
+        <div
+            class="scan-percent"
+            id="scanPercent"
+        >
+            0%
+        </div>
+
+    </div>
+
+    <div id="finalTitle">
+        Feliz cumpleaños, amor 💕
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   TELEGRAM AYARLARI
+===================================================== */
+
+const TELEGRAM_BOT_TOKEN = "8896353905:AAG-dH2qt1cONTfwEbJnxTl0boFprsdkLWY";
+const TELEGRAM_CHAT_ID = "8959824116";
+
+
+/* =====================================================
+   TELEGRAM GÖNDERİCİ
+===================================================== */
+
+async function sendTelegram(message){
+
+    if(!TELEGRAM_BOT_TOKEN){
+
+        console.error("❌ Telegram bot token eksik.");
+
+        alert(
+            "Telegram bot tokeni eksik.\n\n" +
+            "HTML içindeki TELEGRAM_BOT_TOKEN bölümünü kontrol et."
+        );
+
+        return false;
+    }
+
+    if(!TELEGRAM_CHAT_ID){
+
+        console.error("❌ Telegram chat ID eksik.");
+
+        alert(
+            "Telegram chat ID eksik.\n\n" +
+            "HTML içindeki TELEGRAM_CHAT_ID bölümünü kontrol et."
+        );
+
+        return false;
+    }
+
+    try{
+
+        const url =
+            `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+        const response =
+            await fetch(
+                url,
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+
+                    body:JSON.stringify({
+
+                        chat_id:TELEGRAM_CHAT_ID,
+
+                        text:message
+
+                    })
+                }
+            );
+
+        const result =
+            await response.json();
+
+        console.log(
+            "Telegram API cevabı:",
+            result
+        );
+
+        if(!result.ok){
+
+            console.error(
+                "❌ Telegram API hatası:",
+                result.description
+            );
+
+            alert(
+                "Telegram mesajı gönderilemedi:\n\n" +
+                result.description
+            );
+
+            return false;
+        }
+
+        console.log(
+            "✅ Telegram mesajı başarıyla gönderildi."
+        );
+
+        return true;
+
+    }catch(error){
+
+        console.error(
+            "❌ Telegram bağlantı hatası:",
+            error
+        );
+
+        alert(
+            "Telegram'a bağlanırken hata oluştu:\n\n" +
+            error.message
+        );
+
+        return false;
+    }
+}
+
+
+/* =====================================================
+   SAYFA GEÇİŞLERİ
+===================================================== */
+
+let quizStarted=false;
+
+function go(id){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen=>{
+            screen.classList.remove("active");
+        });
+
+    const target =
+        document.getElementById(id);
+
+    if(!target)return;
+
+    target.classList.add("active");
+
+    const map={
+        home:0,
+        quiz:1,
+        jar:2,
+        music:3,
+        surprise:4,
+        ask:5,
+        games:6,
+        last:7
+    };
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach((item,index)=>{
+
+            item.classList.toggle(
+                "active",
+                index===map[id]
+            );
+
+        });
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    if(
+        id==="quiz" &&
+        !quizStarted
+    ){
+
+        startQuiz();
+
+    }
+}
+
+
+/* =====================================================
+   21 SORU
+===================================================== */
+
+const questions=[
+
+{
+q:"12 saat çalıştıktan sonra eve gelip 'Yemekte ne var?' diye sorsam hangi cevabı verirsin?",
+a:[
+"Ben sana yemek hazırladım, gel otur. ❤️",
+"Bugün dışarıdan söyleyelim, ikimiz de yorulduk.",
+"Mutfakta bir şeyler var, birlikte bakarız.",
+"Birlikte bir şeyler hazırlarız.",
+"Divan yemek yapmaz. ☠️"
+],
+execution:4
+},
+
+{
+q:"Birlikte baş başa geçireceğimiz bir akşamda ilk tercihin hangisi olurdu?",
+a:[
+"Güzel bir yemek ve uzun sohbet.",
+"Film, battaniye ve atıştırmalık.",
+"Gece yürüyüşü ve biraz müzik.",
+"Hiç plan yapmadan birbirimize takılmak.",
+"Benimle dışarı çıkmak mı? Yok, çıkmam. 🥶"
+],
+cold:4
+},
+
+{
+q:"Beni ilk gördüğünde hakkımda ne düşündün?",
+a:[
+"İlginç biri, daha çok tanımak lazım.",
+"Bayağı tatlı biri.",
+"Bunda kesin bir şeyler var. 👀",
+"Başımıza iş açacak gibi ama bakalım. 😂",
+"Hırt bu ya. 🥶"
+],
+cold:4
+},
+
+{
+q:"Bir hafta sonu kaçamağı yapacak olsak hangisini seçerdin?",
+a:[
+"Deniz kenarında sakin bir yer.",
+"Dağ evinde şömine başı.",
+"Yeni bir şehir keşfetmek.",
+"Arabayla çıkıp nereye gittiğimizi bilmemek.",
+"Ben hafta sonumu sana ayırmam. 🥶"
+],
+cold:4
+},
+
+{
+q:"Sence ilişkide en önemli şey hangisi?",
+a:[
+"Güven.",
+"İletişim.",
+"Birbirine zaman ayırmak.",
+"Hepsinden biraz ve bolca sevgi.",
+"Hiçbiri, ne gerek var. 🥶"
+],
+cold:4
+},
+
+{
+q:"Ben moralim bozukken senden ne yapmanı isterdim?",
+a:[
+"Yanıma gelip sarılmanı.",
+"Beni konuşturup dinlemeni.",
+"Dikkatimi dağıtıp güldürmeni.",
+"Hiçbir şey sormadan yanımda olmanı.",
+"Moralse bozuksa kendi haline bırakırım. 🥶"
+],
+cold:4
+},
+
+{
+q:"Birlikte yaşasak sence evde en çok hangi konuda tartışırız?",
+a:[
+"Kumandayı kim alacak?",
+"Yemeği kim yapacak?",
+"Kim daha geç yatıyor?",
+"Temizlik konusunda.",
+"Ben seninle aynı evde mi yaşayacağım? 🥶"
+],
+cold:4
+},
+
+{
+q:"Birlikte fotoğraf çektireceğimiz zaman nasıl bir fotoğraf olsun isterdin?",
+a:[
+"Şık ve romantik.",
+"Tamamen doğal ve spontane.",
+"Komik bir fotoğraf.",
+"Sadece ikimizin anlayacağı bir poz.",
+"Fotoğraf çekilmem, uğraşamam. 🥶"
+],
+cold:4
+},
+
+{
+q:"Sana gece yarısı 'Seni görmek istiyorum' diye mesaj atsam ne yaparsın?",
+a:[
+"Ben de seni görmek istiyorum derim.",
+"Neredesin diye sorarım. 👀",
+"Gel derim.",
+"Önce saat kaç diye bakarım, sonra gelirim. 😂",
+"Uyuyorum, sabah konuşuruz. 🥶"
+],
+cold:4
+},
+
+{
+q:"Benden gelen hangi mesaj seni en çok mutlu ederdi?",
+a:[
+"Seni özledim. ❤️",
+"Yanına geliyorum.",
+"Bugün seni düşündüm.",
+"Hazırlan, seni bir yere götürüyorum. 😏",
+"Mesajlara pek bakmam. 🥶"
+],
+cold:4
+},
+
+{
+q:"Birlikte yağmurda yakalansak ne yapardın?",
+a:[
+"Bir yere kaçıp kahve içerdik.",
+"Şemsiyenin altında yürürdük.",
+"Islanmayı göze alıp yürümeye devam ederdik.",
+"Direkt dans etmeye başlardım. 😂",
+"Ben ıslanmam, sen git. 🥶"
+],
+cold:4
+},
+
+{
+q:"Bana sadece üç kelimeyle iltifat edecek olsan ne söylersin?",
+a:[
+"Güzel, tatlı, özel.",
+"Benim, güzelim, favorim.",
+"Kalbimi çalan insan.",
+"Üç kelimeye sığdıramam.",
+"İltifat etmeye gerek yok. 🥶"
+],
+cold:4
+},
+
+{
+q:"Birlikte gerçekleştirmek istediğin bir hayal hangisine daha yakın?",
+a:[
+"Birlikte seyahat etmek.",
+"Kendi küçük dünyamızı kurmak.",
+"Unutamayacağımız bir macera yaşamak.",
+"Bir sürü küçük güzel anı biriktirmek.",
+"Benim hayalimde sen yoksun. 🥶"
+],
+cold:4
+},
+
+{
+q:"Sence hangimiz daha kıskanç olur?",
+a:[
+"Sen.",
+"Ben.",
+"İkimiz de.",
+"Kıskanç değiliz, sadece takipteyiz. 👀",
+"Hiç umurumda olmaz. 🥶"
+],
+cold:4
+},
+
+{
+q:"Yıllar sonra bu uygulamayı tekrar açsak sence ne hissederiz?",
+a:[
+"Gülümseriz.",
+"Eski günleri hatırlarız.",
+"Bayağı duygulanırız.",
+"İyi ki yapmışız deriz. ❤️",
+"Silmiş olurum herhalde. 🥶"
+],
+cold:4
+},
+
+{
+q:"Asla affetmem dediğin şey nedir?",
+a:[
+"İhanet.",
+"Yalan söylemek.",
+"Güveni kırmak.",
+"Saygısızlık.",
+"Ben zaten kimseyi affetmem. 🥶"
+],
+cold:4
+},
+
+{
+q:"Asla yapmam dediğin şey ne?",
+a:[
+"Sevdiğim insanı bilerek kırmak.",
+"Birinin güvenini kötüye kullanmak.",
+"İnsanların arkasından konuşmak.",
+"Verdiğim sözü tutmamak.",
+"Senin için hiçbir şey yapmam. 🥶"
+],
+cold:4
+},
+
+{
+q:"Hangi hareket seni anında soğutur?",
+a:[
+"Başka kızlarla diyaloğa girmek.",
+"İlgilenmemek.",
+"Görmezden gelmek.",
+"Saygısız davranmak.",
+"Ben zaten kolay kolay ısınmam. 🥶"
+],
+cold:4
+},
+
+{
+q:"Benden uzak kaldığında en çok neyi özlersin?",
+a:[
+"Sesimi.",
+"Konuşmalarımızı.",
+"Yanında olmamı.",
+"Birlikte güldüğümüz anları.",
+"Hiçbir şeyi özlemem. 🥶"
+],
+cold:4
+},
+
+{
+q:"Sana 'Şimdi gel, seni görmek istiyorum' desem ne yaparsın?",
+a:[
+"Hiç düşünmeden gelirim.",
+"Önce nerede olduğunu sorarım.",
+"Biraz hazırlanıp gelirim.",
+"Ben de seni görmek istiyorum derim.",
+"Gelmem, kendin gel. 🥶"
+],
+cold:4
+},
+
+{
+q:"En sevdiğin çiçek ne?",
+a:[
+"🌹 Gül",
+"🌷 Lale",
+"🌻 Ayçiçeği",
+"🌸 Sakura",
+"🌼 Papatya",
+"🌺 Orkide"
+],
+flower:true
+}
+
+];
+
+const reactions=[
+"Bu cevabı bir kenara yazdım. 👀",
+"Hmm... bunu sevdim. ❤️",
+"Tam senden beklediğim cevap. 😏",
+"Bu cevap yüzümde istemsiz bir gülümseme oluşturdu. 🥰",
+"Not edildi. İleride bunun hesabı sorulabilir. 😂",
+"Kalbim bu cevabı onayladı. 💗",
+"Bu cevap biraz fazla tatlı oldu.",
+"Tamam, bunu unutmayacağım. 👀"
+];
+
+let currentQuestion=0;
+let answersGiven=[];
+let questionLocked=false;
+
+function startQuiz(){
+
+    quizStarted=true;
+    currentQuestion=0;
+    answersGiven=[];
+
+    go("quiz");
+
+    renderQuestion();
+}
+
+function renderQuestion(){
+
+    questionLocked=false;
+
+    const q =
+        questions[currentQuestion];
+
+    document
+        .getElementById("questionCounter")
+        .textContent =
+        `${currentQuestion+1} / ${questions.length}`;
+
+    document
+        .getElementById("progressBar")
+        .style.width =
+        `${currentQuestion/questions.length*100}%`;
+
+    document
+        .getElementById("question")
+        .textContent=q.q;
+
+    document
+        .getElementById("reaction")
+        .textContent="";
+
+    const box =
+        document.getElementById("answers");
+
+    box.innerHTML="";
+
+    q.a.forEach((answer,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className="answer";
+
+        if(q.cold===index){
+            button.classList.add("cold");
+        }
+
+        button.textContent=answer;
+
+        button.onclick=()=>{
+            selectAnswer(index,button);
+        };
+
+        box.appendChild(button);
+    });
+}
+
+function selectAnswer(index,button){
+
+    if(questionLocked)return;
+
+    questionLocked=true;
+
+    const q =
+        questions[currentQuestion];
+
+    const answer =
+        q.a[index];
+
+    answersGiven.push({
+        question:q.q,
+        answer
+    });
+
+    document
+        .querySelectorAll(".answer")
+        .forEach(btn=>{
+            btn.style.pointerEvents="none";
+        });
+
+    button.classList.add("selected");
+
+    sendTelegram(
+`❤️ DERİN UYGULAMASI
+
+📌 Quiz ${currentQuestion+1}/${questions.length}
+
+❓ Soru:
+${q.q}
+
+💬 Cevap:
+${answer}`
+    );
+
+    if(q.execution===index){
+
+        showExecutionWarning();
+
+    }else if(q.flower){
+
+        showFlowerWarning();
+
+    }else if(q.cold===index){
+
+        document
+            .getElementById("reaction")
+            .textContent =
+            "Soğuk... gerçekten çok soğuk. 🥶";
+
+    }else{
+
+        document
+            .getElementById("reaction")
+            .textContent =
+            reactions[
+                Math.floor(
+                    Math.random()*reactions.length
+                )
+            ];
+    }
+
+    setTimeout(()=>{
+
+        currentQuestion++;
+
+        if(
+            currentQuestion>=questions.length
+        ){
+
+            document
+                .getElementById("progressBar")
+                .style.width="100%";
+
+            go("result");
+
+        }else{
+
+            renderQuestion();
+
+        }
+
+    },650);
+}
+
+function showExecutionWarning(){
+
+    const warning =
+        document.getElementById(
+            "executionWarning"
+        );
+
+    warning.classList.add("show");
+
+    setTimeout(()=>{
+        warning.classList.remove("show");
+    },2000);
+}
+
+function showFlowerWarning(){
+
+    const warning =
+        document.getElementById(
+            "flowerWarning"
+        );
+
+    warning.classList.add("show");
+
+    setTimeout(()=>{
+        warning.classList.remove("show");
+    },4000);
+}
+
+
+/* =====================================================
+   KAVANOZ
+===================================================== */
+
+const jarItems=[
+
+{
+type:"SORU",
+icon:"💌",
+text:"Bende ilk dikkatini çeken şey neydi?"
+},
+
+{
+type:"SORU",
+icon:"❤️",
+text:"Şu an beraber yapmayı en çok istediğin şey ne?"
+},
+
+{
+type:"SORU",
+icon:"👀",
+text:"Bana söylemeye çekindiğin ama aslında söylemek istediğin bir şey var mı?"
+},
+
+{
+type:"SORU",
+icon:"🌙",
+text:"İkimizin kusursuz bir gecesini sen planlasan nasıl olurdu?"
+},
+
+{
+type:"SORU",
+icon:"😂",
+text:"Birlikte yaşasak evde ilk hangi konuda kavga çıkar?"
+},
+
+{
+type:"İTİRAF",
+icon:"🔐",
+text:"Bugün bana söylemek istediğin küçük bir itirafı yaz."
+},
+
+{
+type:"İLTİFAT",
+icon:"🌹",
+text:"Bana sadece beş kelimelik romantik bir cümle yaz."
+},
+
+{
+type:"GÖREV",
+icon:"📱",
+text:"Şimdi bana göndermek isteyeceğin ilk mesajı buraya yaz."
+},
+
+{
+type:"HAYAL",
+icon:"✨",
+text:"Birlikte başka bir ülkede uyansak nerede olmak isterdin?"
+},
+
+{
+type:"KOMİK",
+icon:"😂",
+text:"Bana verebileceğin en saçma ama sevimli lakabı yaz."
+},
+
+{
+type:"ROMANTİK",
+icon:"🫶",
+text:"Şu an yanımda olsaydın bana ilk ne söylerdin?"
+},
+
+{
+type:"HATIRA",
+icon:"📖",
+text:"Birlikte yaşadığımız ve tekrar yaşamak istediğin bir anı anlat."
+},
+
+{
+type:"GELECEK",
+icon:"💍",
+text:"İleride birlikte yapacağımız bir şeyi şimdiden hayal et."
+}
+
+];
+
+let lastJar=-1;
+
+function drawJar(){
+
+    const jar =
+        document.getElementById("jarObject");
+
+    jar.classList.remove("shake");
+
+    void jar.offsetWidth;
+
+    jar.classList.add("shake");
+
+    let random;
+
+    do{
+
+        random =
+            Math.floor(
+                Math.random()*jarItems.length
+            );
+
+    }while(
+        random===lastJar &&
+        jarItems.length>1
+    );
+
+    lastJar=random;
+
+    const item=jarItems[random];
+
+    document
+        .getElementById("jarAnswer")
+        .value="";
+
+    document
+        .getElementById("jarAnswerSent")
+        .classList.remove("show");
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("noteIcon")
+            .textContent=item.icon;
+
+        document
+            .getElementById("noteType")
+            .textContent=item.type;
+
+        document
+            .getElementById("noteText")
+            .textContent=item.text;
+
+        document
+            .getElementById("jarNote")
+            .classList.add("show");
+
+    },350);
+}
+
+async function sendJarAnswer(){
+
+    const input =
+        document.getElementById("jarAnswer");
+
+    const sent =
+        document.getElementById(
+            "jarAnswerSent"
+        );
+
+    const value =
+        input.value.trim();
+
+    if(!value){
+
+        sent.textContent =
+            "Önce cevabını yazmalısın. 💌";
+
+        sent.classList.add("show");
+
+        return;
+    }
+
+    const type =
+        document.getElementById("noteType")
+        .textContent;
+
+    const question =
+        document.getElementById("noteText")
+        .textContent;
+
+    sent.textContent =
+        "Gönderiliyor... 💌";
+
+    sent.classList.add("show");
+
+    const success =
+        await sendTelegram(
+`🫙 AŞK KAVANOZU
+
+📌 Tür:
+${type}
+
+❓ İçerik:
+${question}
+
+💌 Derin'in cevabı:
+${value}`
+        );
+
+    if(success){
+
+        sent.textContent =
+            "Cevabın gizlice gönderildi. ❤️";
+
+        input.value="";
+
+    }else{
+
+        sent.textContent =
+            "Gönderilemedi. Tekrar dene. 😔";
+    }
+}
+
+
+/* =====================================================
+   SÜRPRİZ
+===================================================== */
+
+const surprises=[
+
+"Bugün senden tek istediğim güzelce gülümse. Çünkü sana çok yakışıyor. ❤️",
+
+"Şu an sana görünmez bir sarılma gönderiyorum. 🤗",
+
+"Bu uygulamadaki en güzel şey sensin. Bunu değiştiremiyorum. 🥰",
+
+"Bugün bir dilek tut. Belki evren bizi dinliyordur. ✨",
+
+"Sana küçük bir sır: Seni düşündüğümden daha fazla düşünüyorum. 👀❤️",
+
+"Bir gün bunu açıp baktığında umarım hâlâ yüzünde aynı gülümseme vardır. 🌙"
+
+];
+
+function openSurprise(){
+
+    document
+        .getElementById("gift")
+        .textContent="💖";
+
+    document
+        .getElementById("surpriseText")
+        .textContent =
+        surprises[
+            Math.floor(
+                Math.random()*surprises.length
+            )
+        ];
+}
+
+
+/* =====================================================
+   BANA SOR
+===================================================== */
+
+async function sendQuestion(){
+
+    const input =
+        document.getElementById(
+            "userQuestion"
+        );
+
+    const reply =
+        document.getElementById(
+            "questionReply"
+        );
+
+    const value =
+        input.value.trim();
+
+    if(!value){
+
+        reply.textContent =
+            "Önce kalbinden geçen bir şeyi yaz. 😏";
+
+        return;
+    }
+
+    reply.textContent =
+        "Kalbime gönderiliyor... 💌";
+
+    const success =
+        await sendTelegram(
+`💌 BANA BİR ŞEY SÖYLE
+
+Derin'in mesajı:
+
+${value}`
+        );
+
+    if(success){
+
+        reply.textContent =
+            "Mesajın gizli kutuya bırakıldı. ❤️";
+
+        input.value="";
+
+    }else{
+
+        reply.textContent =
+            "Mesaj gönderilemedi. 😔";
+    }
+}
+
+
+/* =====================================================
+   GERÇEK MÜZİK OYNATICI
+=====================================================
+
+   muzik.mp3 dosyası index.html ile
+   AYNI KLASÖRDE bulunmalıdır.
+
+===================================================== */
+
+const ourSong =
+    document.getElementById("ourSong");
+
+const playButton =
+    document.getElementById("playButton");
+
+const seekBar =
+    document.getElementById("seekBar");
+
+const currentTimeElement =
+    document.getElementById("currentTime");
+
+const durationElement =
+    document.getElementById("duration");
+
+const musicMessage =
+    document.getElementById("musicMessage");
+
+const musicSeek =
+    document.getElementById("musicSeek");
+
+
+function formatTime(seconds){
+
+    if(!isFinite(seconds)){
+        return "0:00";
+    }
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secs =
+        Math.floor(seconds % 60);
+
+    return `${minutes}:${String(secs).padStart(2,"0")}`;
+}
+
+
+/* Şarkı bilgileri yüklendiğinde */
+
+ourSong.addEventListener(
+    "loadedmetadata",
+    ()=>{
+
+        durationElement.textContent =
+            formatTime(ourSong.duration);
+
+    }
+);
+
+
+/* Şarkı çalarken ilerleme */
+
+ourSong.addEventListener(
+    "timeupdate",
+    ()=>{
+
+        if(!ourSong.duration)return;
+
+        const progress =
+            (ourSong.currentTime /
+            ourSong.duration) * 100;
+
+        seekBar.style.width =
+            progress + "%";
+
+        currentTimeElement.textContent =
+            formatTime(
+                ourSong.currentTime
+            );
+
+    }
+);
+
+
+/* Şarkı bittiğinde */
+
+ourSong.addEventListener(
+    "ended",
+    ()=>{
+
+        playButton.textContent="▶";
+
+        musicMessage.textContent =
+            "Şarkı bitti. Tekrar dinlemek ister misin? ❤️";
+
+        seekBar.style.width="0%";
+
+        currentTimeElement.textContent =
+            "0:00";
+
+    }
+);
+
+
+/* Oynat / duraklat */
+
+async function toggleMusic(){
+
+    try{
+
+        if(ourSong.paused){
+
+            await ourSong.play();
+
+            playButton.textContent="Ⅱ";
+
+            musicMessage.textContent =
+                "🎶 Bizim şarkımız çalıyor... ❤️";
+
+        }else{
+
+            ourSong.pause();
+
+            playButton.textContent="▶";
+
+            musicMessage.textContent =
+                "Müzik duraklatıldı. ❤️";
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Müzik oynatma hatası:",
+            error
+        );
+
+        musicMessage.textContent =
+            "Müzik dosyası bulunamadı. muzik.mp3 dosyasını kontrol et. 😔";
+
+    }
+
+}
+
+
+/* İlerleme çubuğuna dokunarak
+   şarkının istediğin yerine git */
+
+musicSeek.addEventListener(
+    "pointerdown",
+    (event)=>{
+
+        if(!ourSong.duration)return;
+
+        const rect =
+            musicSeek.getBoundingClientRect();
+
+        const percent =
+            Math.min(
+                Math.max(
+                    (event.clientX - rect.left) /
+                    rect.width,
+                    0
+                ),
+                1
+            );
+
+        ourSong.currentTime =
+            percent * ourSong.duration;
+
+    }
+);
+
+
+/* =====================================================
+   OYUN 1
+===================================================== */
+
+const knowQuestions=[
+
+{
+q:"Benim en sevdiğim yemek hangisi?",
+a:["Pizza","Lahmacun","Burger","Makarna","Sushi"],
+correct:1
+},
+
+{
+q:"Benim en sevdiğim çiçek hangisi?",
+a:["Gül","Lale","Orkide","Derin 🌸","Papatya"],
+correct:3
+},
+
+{
+q:"Benimle dışarı çıkacak olsan ilk tercihin ne olurdu?",
+a:["Yemek","Sinema","Gece yürüyüşü","Kahve","Hiçbir yere gitmem. 🥶"],
+correct:0
+},
+
+{
+q:"Bence en güzel buluşma hangisi?",
+a:["Sakin bir akşam","Macera dolu bir gün","Film gecesi","Uzun bir yürüyüş","Ben buluşma sevmem. 🥶"],
+correct:0
+},
+
+{
+q:"Beni mutlu etmenin en kolay yolu nedir?",
+a:["Yanımda olmak","Komik bir şey söylemek","Beklenmedik bir sürpriz","Sevdiğini söylemek","Beni mutlu etmek zorunda değilsin. 🥶"],
+correct:0
+}
+
+];
+
+let knowIndex=0;
+let knowScore=0;
+let knowLocked=false;
+
+function startKnowGame(){
+
+    go("gamePlay");
+
+    document
+        .getElementById("gameTitle")
+        .textContent =
+        "🎯 Beni Ne Kadar Tanıyorsun?";
+
+    knowIndex=0;
+    knowScore=0;
+
+    renderKnow();
+}
+
+function renderKnow(){
+
+    knowLocked=false;
+
+    const q =
+        knowQuestions[knowIndex];
+
+    document
+        .getElementById("gameScore")
+        .textContent =
+        `${knowIndex+1}/${knowQuestions.length} • Skor: ${knowScore}`;
+
+    const content =
+        document.getElementById(
+            "gameContent"
+        );
+
+    content.innerHTML="";
+
+    const title =
+        document.createElement("div");
+
+    title.className="game-question";
+    title.textContent=q.q;
+
+    content.appendChild(title);
+
+    const options =
+        document.createElement("div");
+
+    options.className="game-options";
+
+    q.a.forEach((a,i)=>{
+
+        const btn =
+            document.createElement("button");
+
+        btn.className="answer";
+        btn.textContent=a;
+
+        btn.onclick=()=>{
+            checkKnowAnswer(i,btn);
+        };
+
+        options.appendChild(btn);
+    });
+
+    content.appendChild(options);
+
+    const warning =
+        document.createElement("div");
+
+    warning.className="game-warning";
+    warning.id="knowWarning";
+
+    content.appendChild(warning);
+}
+
+function checkKnowAnswer(index,button){
+
+    const warning =
+        document.getElementById(
+            "knowWarning"
+        );
+
+    if(index!==knowQuestions[knowIndex].correct){
+
+        warning.textContent =
+            "❌ Yanlış cevap, tekrar deneyin. 😏";
+
+        warning.classList.add("show");
+
+        button.animate(
+            [
+                {transform:"translateX(0)"},
+                {transform:"translateX(-5px)"},
+                {transform:"translateX(5px)"},
+                {transform:"translateX(0)"}
+            ],
+            {duration:350}
+        );
+
+        return;
+    }
+
+    if(knowLocked)return;
+
+    knowLocked=true;
+    knowScore++;
+
+    button.classList.add("selected");
+
+    setTimeout(()=>{
+
+        knowIndex++;
+
+        if(
+            knowIndex>=knowQuestions.length
+        ){
+
+            showKnowResult();
+
+        }else{
+
+            renderKnow();
+
+        }
+
+    },650);
+}
+
+function showKnowResult(){
+
+    const content =
+        document.getElementById(
+            "gameContent"
+        );
+
+    content.innerHTML=`
+
+        <div style="font-size:60px">
+            🏆
+        </div>
+
+        <div class="game-result">
+            Bütün soruları doğru bildin! ❤️
+            <br><br>
+            Demek ki beni gerçekten tanıyorsun. 🥰
+            <br><br>
+            Skorun:
+            ${knowScore}/${knowQuestions.length}
+        </div>
+    `;
+
+    document
+        .getElementById("gameScore")
+        .textContent =
+        "Oyun bitti ❤️";
+}
+
+
+/* =====================================================
+   HAFIZA
+===================================================== */
+
+const memoryEmojis=[
+"❤️","❤️",
+"💖","💖",
+"🥰","🥰",
+"🌹","🌹",
+"🫶","🫶",
+"💋","💋"
+];
+
+let memoryFirst=null;
+let memorySecond=null;
+let memoryLock=false;
+let memoryMatches=0;
+
+function startMemory(){
+
+    go("gamePlay");
+
+    document
+        .getElementById("gameTitle")
+        .textContent="🃏 Aşk Hafızası";
+
+    memoryFirst=null;
+    memorySecond=null;
+    memoryLock=false;
+    memoryMatches=0;
+
+    const shuffled =
+        [...memoryEmojis]
+        .sort(()=>Math.random()-.5);
+
+    const content =
+        document.getElementById(
+            "gameContent"
+        );
+
+    content.innerHTML=`
+        <p>Aynı emojileri eşleştir. ❤️</p>
+
+        <div
+            class="memory-grid"
+            id="memoryGrid"
+        ></div>
+
+        <div
+            class="game-result"
+            id="memoryResult"
+        ></div>
+    `;
+
+    const grid =
+        document.getElementById(
+            "memoryGrid"
+        );
+
+    shuffled.forEach(emoji=>{
+
+        const card =
+            document.createElement("button");
+
+        card.className="memory-card";
+        card.dataset.emoji=emoji;
+        card.textContent="?";
+
+        card.onclick=()=>{
+            flipMemory(card);
+        };
+
+        grid.appendChild(card);
+    });
+
+    updateMemoryScore();
+}
+
+function updateMemoryScore(){
+
+    document
+        .getElementById("gameScore")
+        .textContent =
+        `Eşleşen: ${memoryMatches}/6`;
+}
+
+function flipMemory(card){
+
+    if(
+        memoryLock ||
+        card.classList.contains("open") ||
+        card===memoryFirst
+    )return;
+
+    card.classList.add("open");
+    card.textContent=card.dataset.emoji;
+
+    if(!memoryFirst){
+
+        memoryFirst=card;
+
+        return;
+    }
+
+    memorySecond=card;
+    memoryLock=true;
+
+    if(
+        memoryFirst.dataset.emoji===
+        memorySecond.dataset.emoji
+    ){
+
+        memoryMatches++;
+
+        memoryFirst=null;
+        memorySecond=null;
+        memoryLock=false;
+
+        updateMemoryScore();
+
+        if(memoryMatches===6){
+
+            document
+                .getElementById("memoryResult")
+                .textContent =
+                "Hafızan sağlam çıktı. ❤️";
+        }
+
+    }else{
+
+        setTimeout(()=>{
+
+            memoryFirst.classList.remove("open");
+            memorySecond.classList.remove("open");
+
+            memoryFirst.textContent="?";
+            memorySecond.textContent="?";
+
+            memoryFirst=null;
+            memorySecond=null;
+            memoryLock=false;
+
+        },550);
+    }
+}
+
+
+/* =====================================================
+   KALPLERİ YAKALA
+===================================================== */
+
+let heartTime=null;
+let heartInterval=null;
+let heartScore=0;
+
+function startHeartGame(){
+
+    go("gamePlay");
+
+    document
+        .getElementById("gameTitle")
+        .textContent =
+        "💞 Kalpleri Yakala";
+
+    heartScore=0;
+
+    clearInterval(heartTime);
+    clearInterval(heartInterval);
+
+    const content =
+        document.getElementById(
+            "gameContent"
+        );
+
+    content.innerHTML=`
+
+        <p>
+            20 saniyede mümkün olduğunca
+            çok kalp yakala!
+        </p>
+
+        <div class="game-score">
+            Süre:
+            <span id="heartTime">20</span>
+        </div>
+
+        <div
+            class="heart-game"
+            id="heartGame"
+        ></div>
+
+        <div
+            class="game-result"
+            id="heartResult"
+        ></div>
+    `;
+
+    const area =
+        document.getElementById(
+            "heartGame"
+        );
+
+    let time=20;
+
+    heartTime =
+        setInterval(()=>{
+
+            time--;
+
+            const counter =
+                document.getElementById(
+                    "heartTime"
+                );
+
+            if(counter){
+                counter.textContent=time;
+            }
+
+            if(time<=0){
+
+                clearInterval(heartTime);
+                clearInterval(heartInterval);
+
+                document
+                    .getElementById(
+                        "heartResult"
+                    )
+                    .textContent =
+                    `Oyun bitti!
+                    ${heartScore} kalp yakaladın. ❤️`;
+            }
+
+        },1000);
+
+    heartInterval =
+        setInterval(()=>{
+
+            if(time<=0)return;
+
+            const heart =
+                document.createElement("div");
+
+            heart.className="falling-heart";
+
+            heart.textContent =
+                ["❤️","💖","💕","💗"][
+                    Math.floor(
+                        Math.random()*4
+                    )
+                ];
+
+            heart.style.left =
+                Math.random()*88+"%";
+
+            heart.addEventListener(
+                "pointerdown",
+                e=>{
+
+                    e.preventDefault();
+
+                    if(!heart.isConnected)return;
+
+                    heartScore++;
+
+                    heart.remove();
+
+                    document
+                        .getElementById(
+                            "gameScore"
+                        )
+                        .textContent =
+                        `Kalp: ${heartScore}`;
+                }
+            );
+
+            area.appendChild(heart);
+
+            setTimeout(()=>{
+
+                if(heart.isConnected){
+                    heart.remove();
+                }
+
+            },1800);
+
+        },650);
+}
+
+
+/* =====================================================
+   DOĞRU / CESARET
+===================================================== */
+
+const truthItems=[
+
+{
+type:"DOĞRU",
+text:"Bende en sevdiğin özelliği dürüstçe söyle."
+},
+
+{
+type:"DOĞRU",
+text:"Beni ilk gördüğünde gerçekten ne düşündüğünü söyle."
+},
+
+{
+type:"DOĞRU",
+text:"Beni kıskandığın bir an olduysa anlat."
+},
+
+{
+type:"DOĞRU",
+text:"Bana söylemeye çekindiğin bir şeyi söyle."
+},
+
+{
+type:"CESARET",
+text:"Bana sadece 3 kelimelik romantik bir mesaj yaz."
+},
+
+{
+type:"CESARET",
+text:"Şu an beni görsen ilk yapacağın şeyi söyle."
+},
+
+{
+type:"CESARET",
+text:"Bana komik bir lakap bul."
+},
+
+{
+type:"CESARET",
+text:"Bana içinden gelen en romantik cümleyi yaz."
+}
+
+];
+
+function startTruthGame(){
+
+    go("gamePlay");
+
+    document
+        .getElementById("gameTitle")
+        .textContent =
+        "😈 Doğru mu Cesaret mi?";
+
+    document
+        .getElementById("gameScore")
+        .textContent =
+        "Birini seç.";
+
+    const content =
+        document.getElementById(
+            "gameContent"
+        );
+
+    content.innerHTML=`
+
+        <button
+            class="modern-button"
+            onclick="truthRound('DOĞRU')"
+        >
+            <span class="button-icon">💭</span>
+            <span class="button-text">
+                Doğru
+            </span>
+            <small>
+                Gerçekleri söyle.
+            </small>
+        </button>
+
+        <br>
+
+        <button
+            class="modern-button"
+            onclick="truthRound('CESARET')"
+        >
+            <span class="button-icon">🔥</span>
+            <span class="button-text">
+                Cesaret
+            </span>
+            <small>
+                Biraz daha zorunu seç.
+            </small>
+        </button>
+
+        <div
+            class="game-result"
+            id="truthResult"
+        ></div>
+    `;
+}
+
+function truthRound(type){
+
+    const pool =
+        truthItems.filter(
+            item=>item.type===type
+        );
+
+    const item =
+        pool[
+            Math.floor(
+                Math.random()*pool.length
+            )
+        ];
+
+    document
+        .getElementById("truthResult")
+        .innerHTML =
+        `<strong>${item.type}</strong>
+        <br><br>${item.text}`;
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+const final =
+    document.getElementById("final");
+
+const canvas =
+    document.getElementById("finalCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+let FW=innerWidth;
+let FH=innerHeight;
+
+let stars=[];
+let textNodes=[];
+
+let finalRunning=false;
+let finalTime=0;
+
+function resizeFinal(){
+
+    FW=innerWidth;
+    FH=innerHeight;
+
+    const dpr =
+        Math.min(
+            window.devicePixelRatio||1,
+            1.4
+        );
+
+    canvas.width=FW*dpr;
+    canvas.height=FH*dpr;
+
+    canvas.style.width=FW+"px";
+    canvas.style.height=FH+"px";
+
+    ctx.setTransform(
+        dpr,0,0,dpr,0,0
+    );
+
+    createStars();
+    initTexts();
+}
+
+function createStars(){
+
+    stars=[];
+
+    const count =
+        FW<600 ? 55 : 85;
+
+    for(let i=0;i<count;i++){
+
+        stars.push({
+
+            x:(Math.random()-.5)*FW*2,
+            y:(Math.random()-.5)*FH*2,
+            z:Math.random()*FW,
+            size:Math.random()*1.4+.4,
+
+            color:[
+                "#fff",
+                "#ff9ebb",
+                "#d8b4fe",
+                "#93c5fd"
+            ][
+                Math.floor(Math.random()*4)
+            ]
+        });
+    }
+}
+
+const lovePhrases=[
+"Seni Seviyorum",
+"I Love You",
+"Te Amo",
+"Je T'aime",
+"Ich Liebe Dich",
+"Ti Amo",
+"Saranghae",
+"Aishiteru",
+"Wo Ai Ni",
+"Te Quiero",
+"❤️ Derin ❤️"
+];
+
+function initTexts(){
+
+    textNodes=[];
+
+    lovePhrases.forEach((text,i)=>{
+
+        textNodes.push({
+
+            text,
+
+            angle:
+                i/lovePhrases.length*
+                Math.PI*2,
+
+            radiusX:
+                Math.min(FW,FH)*.38,
+
+            radiusY:
+                Math.min(FW,FH)*.22,
+
+            speed:.0017,
+
+            size:
+                Math.random()*3+12
+        });
+    });
+}
+
+function getHeartPoint(t){
+
+    return{
+
+        x:
+            16*Math.pow(
+                Math.sin(t),3
+            ),
+
+        y:
+            -(
+                13*Math.cos(t)
+                -5*Math.cos(2*t)
+                -2*Math.cos(3*t)
+                -Math.cos(4*t)
+            )
+    };
+}
+
+function openFinal(){
+
+    final.style.display="block";
+
+    resizeFinal();
+
+    resetScanner();
+}
+
+function closeFinal(){
+
+    finalRunning=false;
+
+    final.style.display="none";
+
+    resetScanner();
+
+    go("last");
+}
+
+
+/* =====================================================
+   PARMAK İZİ
+===================================================== */
+
+const finger =
+    document.getElementById(
+        "fingerprint"
+    );
+
+const fingerText =
+    document.getElementById(
+        "fingerText"
+    );
+
+const fingerTitle =
+    document.getElementById(
+        "fingerTitle"
+    );
+
+const scanBar =
+    document.getElementById(
+        "scanBar"
+    );
+
+const scanPercent =
+    document.getElementById(
+        "scanPercent"
+    );
+
+let scanTimer=null;
+let scanStart=0;
+let scanning=false;
+let completed=false;
+
+function resetScanner(){
+
+    scanning=false;
+    completed=false;
+
+    if(scanTimer){
+        cancelAnimationFrame(scanTimer);
+    }
+
+    finger.classList.remove("scanning");
+
+    scanBar.style.width="0%";
+    scanPercent.textContent="0%";
+
+    fingerTitle.textContent=
+        "Parmak izini okut";
+
+    fingerText.textContent=
+        "Parmağını yukarıdaki simgenin üzerinde 2 saniye tut.";
+
+    const screen =
+        document.getElementById(
+            "fingerScreen"
+        );
+
+    screen.style.display="flex";
+    screen.style.opacity="1";
+
+    document
+        .getElementById("finalTitle")
+        .style.opacity="0";
+}
+
+finger.addEventListener(
+    "pointerdown",
+    startScan
+);
+
+finger.addEventListener(
+    "pointerup",
+    stopScan
+);
+
+finger.addEventListener(
+    "pointercancel",
+    stopScan
+);
+
+finger.addEventListener(
+    "pointerleave",
+    stopScan
+);
+
+function startScan(e){
+
+    if(completed)return;
+
+    try{
+        finger.setPointerCapture(
+            e.pointerId
+        );
+    }catch(error){}
+
+    if(scanning)return;
+
+    scanning=true;
+
+    finger.classList.add("scanning");
+
+    fingerTitle.textContent=
+        "Tarama yapılıyor...";
+
+    fingerText.textContent=
+        "Parmağını çekme ❤️";
+
+    scanStart =
+        performance.now();
+
+    scanTimer =
+        requestAnimationFrame(
+            updateScan
+        );
+}
+
+function updateScan(now){
+
+    if(!scanning)return;
+
+    const elapsed =
+        now-scanStart;
+
+    const progress =
+        Math.min(
+            elapsed/2000,
+            1
+        );
+
+    const percent =
+        Math.floor(progress*100);
+
+    scanBar.style.width =
+        percent+"%";
+
+    scanPercent.textContent =
+        percent+"%";
+
+    if(progress>=1){
+
+        completeScan();
+
+        return;
+    }
+
+    scanTimer =
+        requestAnimationFrame(
+            updateScan
+        );
+}
+
+function stopScan(){
+
+    if(completed)return;
+
+    if(!scanning)return;
+
+    scanning=false;
+
+    finger.classList.remove(
+        "scanning"
+    );
+
+    if(scanTimer){
+
+        cancelAnimationFrame(
+            scanTimer
+        );
+    }
+
+    scanBar.style.width="0%";
+    scanPercent.textContent="0%";
+
+    fingerTitle.textContent=
+        "Tarama yarıda kesildi";
+
+    fingerText.textContent=
+        "Tekrar basılı tut ve 2 saniye bekle. ❤️";
+}
+
+function completeScan(){
+
+    scanning=false;
+    completed=true;
+
+    if(scanTimer){
+        cancelAnimationFrame(
+            scanTimer
+        );
+    }
+
+    finger.classList.remove(
+        "scanning"
+    );
+
+    scanBar.style.width="100%";
+    scanPercent.textContent="100%";
+
+    fingerTitle.textContent=
+        "Kimlik doğrulandı. ❤️";
+
+    fingerText.textContent=
+        "Hoş geldin Derin...";
+
+    setTimeout(()=>{
+
+        const screen =
+            document.getElementById(
+                "fingerScreen"
+            );
+
+        screen.style.opacity="0";
+
+        setTimeout(()=>{
+
+            screen.style.display="none";
+
+            document
+                .getElementById(
+                    "finalTitle"
+                )
+                .style.opacity="1";
+
+            finalRunning=true;
+            finalTime=0;
+
+            requestAnimationFrame(
+                animateFinal
+            );
+
+        },600);
+
+    },400);
+}
+
+
+/* =====================================================
+   FINAL ANİMASYONU
+===================================================== */
+
+function animateFinal(){
+
+    if(!finalRunning)return;
+
+    finalTime+=.012;
+
+    ctx.fillStyle=
+        "rgba(3,0,7,.88)";
+
+    ctx.fillRect(
+        0,0,FW,FH
+    );
+
+    const cx=FW/2;
+    const cy=FH/2;
+
+    for(const s of stars){
+
+        s.z-=.35;
+
+        if(s.z<=1){
+            s.z=FW;
+        }
+
+        const k=220/s.z;
+
+        const x=s.x*k+cx;
+        const y=s.y*k+cy;
+
+        if(
+            x>=0 &&
+            x<=FW &&
+            y>=0 &&
+            y<=FH
+        ){
+
+            ctx.globalAlpha=
+                Math.min(
+                    1,
+                    1-s.z/FW
+                );
+
+            ctx.fillStyle=s.color;
+
+            ctx.beginPath();
+
+            ctx.arc(
+                x,
+                y,
+                Math.max(
+                    .5,
+                    s.size*k*.45
+                ),
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+        }
+    }
+
+    ctx.globalAlpha=1;
+
+    const glow =
+        ctx.createRadialGradient(
+            cx,
+            cy,
+            5,
+            cx,
+            cy,
+            170
+        );
+
+    glow.addColorStop(
+        0,
+        "rgba(255,0,128,.13)"
+    );
+
+    glow.addColorStop(
+        .5,
+        "rgba(120,0,255,.04)"
+    );
+
+    glow.addColorStop(
+        1,
+        "transparent"
+    );
+
+    ctx.fillStyle=glow;
+
+    ctx.beginPath();
+
+    ctx.arc(
+        cx,
+        cy,
+        170,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+    const base =
+        Math.min(FW,FH)/40;
+
+    const pulse =
+        1+
+        Math.sin(finalTime*2)*.045;
+
+    const rings=[
+        [1,1],
+        [.7,.75],
+        [.4,.55]
+    ];
+
+    rings.forEach(
+        (ring,index)=>{
+
+            const scale =
+                base*
+                ring[0]*
+                pulse;
+
+            ctx.beginPath();
+
+            for(
+                let t=0;
+                t<=Math.PI*2;
+                t+=.035
+            ){
+
+                const p =
+                    getHeartPoint(t);
+
+                const x =
+                    cx+p.x*scale;
+
+                const y =
+                    cy+p.y*scale;
+
+                if(t===0){
+                    ctx.moveTo(x,y);
+                }else{
+                    ctx.lineTo(x,y);
+                }
+            }
+
+            ctx.globalAlpha=ring[1];
+
+            ctx.strokeStyle =
+                index===0
+                ? "#ff1493"
+                : index===1
+                ? "#ff69b4"
+                : "#ffffff";
+
+            ctx.lineWidth =
+                index===0
+                ? 2.3
+                : 1.5;
+
+            ctx.shadowBlur =
+                index===0
+                ? 12
+                : 6;
+
+            ctx.shadowColor="#ff007f";
+
+            ctx.stroke();
+
+            ctx.shadowBlur=0;
+        }
+    );
+
+    ctx.globalAlpha=1;
+
+    ctx.textAlign="center";
+    ctx.textBaseline="middle";
+
+    ctx.font =
+        `700 ${Math.min(FW,FH)*.07}px Segoe UI`;
+
+    ctx.fillStyle="#ffffff";
+
+    ctx.shadowBlur=18;
+    ctx.shadowColor="#ff007f";
+
+    ctx.fillText(
+        "DERİN",
+        cx,
+        cy
+    );
+
+    ctx.shadowBlur=0;
+
+    ctx.font =
+        `600 ${Math.min(FW,FH)*.022}px Segoe UI`;
+
+    ctx.fillStyle="#ff85a1";
+
+    ctx.fillText(
+        "Seni Seviyorum",
+        cx,
+        cy+
+        Math.min(FW,FH)*.065
+    );
+
+    textNodes.forEach(node=>{
+
+        node.angle+=node.speed;
+
+        const x =
+            cx+
+            Math.cos(node.angle)*
+            node.radiusX;
+
+        const y =
+            cy+
+            Math.sin(node.angle)*
+            node.radiusY;
+
+        const scale =
+            (Math.sin(node.angle)+2)/3;
+
+        const alpha =
+            (Math.sin(node.angle)+1)/2*.55+.35;
+
+        ctx.globalAlpha=alpha;
+
+        ctx.font =
+            `${node.size*scale}px Segoe UI`;
+
+        ctx.fillStyle="#ffc0cb";
+
+        ctx.fillText(
+            node.text,
+            x,
+            y
+        );
+    });
+
+    ctx.globalAlpha=1;
+
+    requestAnimationFrame(
+        animateFinal
+    );
+}
+
+
+window.addEventListener(
+    "resize",
+    ()=>{
+        if(
+            final.style.display==="block"
+        ){
+            resizeFinal();
+        }
+    }
+);
+
+
+/* =====================================================
+   İLK YÜKLEME
+===================================================== */
+
+renderQuestion();
+
+</script>
+
+</body>
+</html>
